@@ -1,0 +1,148 @@
+import javax.swing.JOptionPane;
+
+public class Odev4tekrar1 {
+    
+
+    //Calisma 1:
+  /*
+   * Unit test - Genellikle fonksiyonlari ve mothodlari test etme maksadiyla kullanilir ve yazilimin 
+   * kalitesinin artmasina yardimci olur.
+   * Unit test kullanma sebepleri - Kodda olan hatalari daha hizli tespit edip hata ayiklama islemini
+   * hizlandirir. Kodun degistirilmesi sirasinda meydana gelebilecek yan etkileri onler ve bu da kodu daha sonradan 
+   * degistirilen veya gelecekteki degisimlere daha hizli uyum saglamasina yardimci olur. Kodun hala calisir
+   * durumda olup olmadigini kontrol eder ve kodun gelecekteki gelistiricilere nasil kullanilmasi konusunda
+   * bilgi saglar.
+    
+   *Unit test Frameworkleri:
+   1. JUnit: Java projeleri için popüler bir unit test framework'üdür.
+
+   2.NUnit: .NET platformları için kullanılan bir unit test framework'üdür.
+
+   3.PyTest: Python projeleri için basit ve güçlü bir test framework'üdür.
+
+   4.RSpec: Ruby projeleri için bir test framework'üdür.
+
+   5.Mocha: JavaScript projeleri için popüler bir test framework'üdür.
+
+   6.PHPUnit: PHP projeleri için kullanılan bir unit test framework'üdür.
+
+   7.Golang Testing: Go projeleri için standart bir test framework'ü içerir.
+
+   8.CppUnit: C++ projeleri için bir unit test framework'üdür.
+
+   *Unit Test İçin Uyulması Gereken Kurallar:
+   -Her bir test isole edilmis (isolated) , tekrarlanabilir (repeatable -test sonuclari her zaman ayni olmalidir),
+   basit , anlasilir ve net olmalidir. Ayni zamanda testler surekli guncellenmeli, hizli calismali, bagimsiz
+   olmali ve mumkunse tum kod parcalari ayri ayri test edilmelidir.
+
+   */
+
+   // Calisma 2:
+   /*
+    * Design Pattern - (Tasarım desenleri) yazılım geliştirme sürecini daha verimli ve sürdürülebilir hale getirmek 
+      için kullanılır.Tasarım desenlerinin birçok türü vardır ve bu tasarım desenleri, yazılım geliştirme sürecini 
+      daha organize , okunaklı ve bakımı daha kolay hale getirmek için güçlü araçlardır. Design Pattern'in en yaygin
+      turleri :
+      1.Singleton Pattern (Tekil Örnek Deseni)
+      Ornek1 - Bir tek veritabanı bağlantısı oluşturmak için Singleton desenini kullanabiliriz. Bu, çok sayıda
+      bağlantının gereksiz yere oluşturulmasını önler.
+      Ornek2 - Bir konfigürasyon yöneticisi, yalnızca tek bir yapılandırma dosyasını okumak ve paylaşmak için 
+      kullanılabilir.
+      2.Factory Method Pattern (Fabrika Metodu Deseni)
+      Ornek1 -  Bir oyun uygulamasında, farklı düşman tipleri için Factory Method desenini kullanabiliriz. 
+      Ornek2 - GUI (JFrame, JPanel  ,JButton) bileşenlerini oluşturan bir uygulama, her bileşen türü için bir 
+      fabrika metodu kullanabilir.
+      3.Observer Pattern (Gözlemci Deseni)
+      Ornek1 -  Bir hava durumu uygulamasında, hava durumu değişikliklerini gözlemleyen ve kullanıcılara 
+      güncellemeleri bildiren Observer desenini kullanabiliriz.
+      Ornek2 - Bir haber sitesi, yeni makalelerin yayınlandığını bildirmek için okuyucularını gözlemciler 
+      olarak kullanabilir.
+      4.Strategy Pattern (Strateji Deseni)
+      Ornek1 -  Bir ödeme işlemi, farklı ödeme yöntemlerini (kredi kartı, PayPal, nakit) desteklemek için strateji 
+      desenini kullanabilir.
+      Ornek2 - Diyelim ki bir taşıma hizmeti uygulaması geliştiriyorsunuz ve kullanıcılarınıza farklı taşıma 
+      seçenekleri sunmak istiyorsunuz. Kullanıcılar, paketlerini göndermek veya taşımak için farklı taşıma 
+      hizmetleri (örneğin, hızlı kurye, ekonomik teslimat, hava kargo) arasından seçim yapmalıdır.
+      5.Decorator Pattern (Dekoratör Deseni)
+      Ornek1 -  Bir metin düzenleme uygulaması, metin nesnelerine farklı biçimlendirme seçeneklerini eklemek için 
+      dekoratör desenini kullanabilir.
+      Ornek2 - Diyelim ki bir restoran uygulaması geliştiriyorsunuz ve kullanıcıların menüden yemek seçmelerini 
+      sağlıyorsunuz. Ancak aynı zamanda kullanıcılara yemeklerini kişiselleştirebilmeleri için bir seçenek 
+      sunmak istiyorsunuz.
+    */
+
+   
+
+    // Calisma 3:
+
+    public static void main(String[] args) {
+        String password = JOptionPane.showInputDialog("Lütfen yeni bir şifre belirleyiniz.");
+      
+         //Gerekli olan kosullari kontrol etmesi icin bazi ozellikler tanimliyorum.
+       
+        char[] c = password.toCharArray();
+        boolean hasLetter = false;
+        boolean hasDigit = false;
+        boolean hasUpperCase = false;
+        String specialChars = "!@#$%^&*()_+-=[]{}|;:'\",.<>?";
+        boolean hasSpecialChar = false;
+        String bosluk = " "; 
+        boolean hasBosluk = false;
+        int cevap;
+        // Sifre uzunlugu 8 karakter'den fazla 95 karakterden az olmasi icin if-else kosulunu tanimliyorum
+        if (password.length() < 8) {
+            JOptionPane.showMessageDialog(null, "Şifre en az '8' karakter içermelidir!", "Hata", JOptionPane.ERROR_MESSAGE);
+        }
+        if (password.length() > 95) {
+            JOptionPane.showMessageDialog(null, "Şifre '95' karakterden daha fazla olamaz!", "Hata", JOptionPane.ERROR_MESSAGE);
+        }
+
+        // Sifre icinde hem harf , hem sayi , hem buyuk harf, hem ozel karakter olmasi hem de bosluk olmamasi
+        //icin farkli kousllar tanimliyorum.
+        for (char ch : c) {
+            if (Character.isLetter(ch)) {
+                hasLetter = true;
+            }  if (Character.isDigit(ch)) {
+                hasDigit = true;
+            }  if (Character.isUpperCase(ch)) {
+                hasUpperCase = true;
+            }   if (specialChars.contains(String.valueOf(ch))) {
+                hasSpecialChar = true;
+            } if (bosluk.contains(String.valueOf(ch))) {
+                hasBosluk = true;
+            }
+
+        }
+        // Istenilen kosullar ssaglanmadiginda sistem her seferinde bir uyari mesaji veriyor.
+        if (!hasLetter) {
+            JOptionPane.showMessageDialog(null, "Şifre en az 1 harf içermelidir!", "Hata", JOptionPane.ERROR_MESSAGE);
+        }
+        if (!hasDigit) {
+            JOptionPane.showMessageDialog(null, "Şifre en az 1 sayı içermelidir!", "Hata", JOptionPane.ERROR_MESSAGE);
+        }
+        if (!hasUpperCase) {
+            JOptionPane.showMessageDialog(null, "Şifre en az 1 büyük harf içermelidir!", "Hata", JOptionPane.ERROR_MESSAGE);
+        } 
+        if (!hasSpecialChar) {
+            JOptionPane.showMessageDialog(null, "Şifre en az 1 ozel karakter icermelidir!", "Hata", JOptionPane.ERROR_MESSAGE);
+     
+        }  
+        if (hasBosluk) {
+             JOptionPane.showMessageDialog(null, "Şifre bosluk icermemelidir!", "Hata", JOptionPane.ERROR_MESSAGE);
+     
+        }
+        if(hasLetter && hasDigit && hasUpperCase && hasSpecialChar && !hasBosluk){
+            // En sonda kosullari saglayan sifre olusturuldugunda sifrenin kaydedilip kaydedilmeyecegini soruyor.
+            cevap =  JOptionPane.showConfirmDialog(null, "Sifreyi kaydetmek ister misiniz?", "Onay", JOptionPane.YES_NO_OPTION);
+           if (cevap == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(null, "Yeni sifre :"+password, "Bilgi", JOptionPane.INFORMATION_MESSAGE);
+   
+           } else {
+            JOptionPane.showMessageDialog(null, "Yeni bir sifre icin programi yeniden calistirin!", "Onay", JOptionPane.INFORMATION_MESSAGE);
+           }
+        
+        }
+    
+}
+
+}  
