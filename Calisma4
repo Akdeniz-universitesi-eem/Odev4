@@ -1,0 +1,74 @@
+// Calisma 4 :
+
+public class Odev4tekrar2 {
+    public static void main(String[] args) {
+        degerE();
+        mukemmelSayi();
+        areFriends();
+    }
+
+    public static void degerE() {
+        double e = degerEHesaplama();
+        System.out.println("e sayısı: " + e);
+    }
+
+    public static double degerEHesaplama() {
+        //Ondalik sayi oldugu icin double veri tipi kullaniliyor.
+        double e = 1;
+        double term = 1;
+        for (int i = 1; i <= 10; i++) {
+            term /= i;
+            e += term;
+        }
+        return e;
+     
+          }
+          // 4 basamakli mukemmel sayiyi hesapladigi fonksiyonu yazdiriyor.
+          public static void mukemmelSayi() {
+            int perfectNumber = dortBasamakMukemmelSayi();
+            System.out.println("4 basamaklı mükemmel sayı: " + perfectNumber);
+        }
+        // 4 basamakli mukemmel sayiyi hesapliyor.
+    public static int dortBasamakMukemmelSayi() {
+        for (int num = 1000; num <= 9999; num++) {
+            if (isPerfect(num)) {
+                return num;
+            }
+        }
+        return -1; 
+       }
+
+    public static boolean isPerfect(int num) {
+        int sum = 0;
+        for (int i = 1; i <= num / 2; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        return sum == num;
+    }
+
+    // Arkadas sayilari buldugu fonksiyonu yazdiriyor.
+    public static void areFriends() {
+        dortBasamakArkadasSayi();
+    }
+
+    public static void dortBasamakArkadasSayi() {
+        for (int x = 1000; x <= 9999; x++) {
+            int y = bolenlerToplami(x);
+            if (x != y && bolenlerToplami(y) == x) {
+                System.out.println(x + " ve " + y + " arkadaş sayılardır.");
+            }
+        }
+    }
+
+    public static int bolenlerToplami(int num) {
+        int sum = 0;
+        for (int i = 1; i <= num / 2; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        return sum;
+    }
+}
